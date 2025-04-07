@@ -25,14 +25,13 @@ connection = psycopg2.connect(
 )
 
 cursor = connection.cursor()
-# Create the table if it doesn't exist
-'''
+
 cursor.execute("SELECT * FROM beers ORDER BY date DESC LIMIT 1")
 result = cursor.fetchone()
 last_update = result[0]
 last_count = result[1]
 cursor.close()
-'''
+
 
 last_update = "2025-03-01"
 new_beer_count = 0
@@ -71,9 +70,8 @@ for purchase in data.get("purchases", []):
             new_beer_count += int(product.get('quantity', 0))
 
 print(f"New beer count: {new_beer_count}")
-'''
+
 cursor = connection.cursor()
 cursor.execute("INSERT INTO beers (date, count) VALUES (%s, %s)", (datetime.now().date(), new_beer_count+last_count))
 connection.commit()
 connection.close()
-'''
