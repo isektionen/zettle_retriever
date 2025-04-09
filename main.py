@@ -32,8 +32,6 @@ last_update = result[0]
 last_count = result[1]
 cursor.close()
 
-
-last_update = "2025-03-01"
 new_beer_count = 0
 
 url = "https://oauth.zettle.com/token"
