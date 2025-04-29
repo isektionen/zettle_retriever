@@ -63,7 +63,7 @@ for purchase in data.get("purchases", []):
     for product in purchase.get("products", []):
         print()
         print(product.get('name', 'Unnamed Product'))
-        if "öl" in product.get('name', 'Unnamed Product').lower():
+        if any(keyword in product.get('name', 'Unnamed Product').lower() for keyword in ["öl", "bryggmästarn", "peroni"]):
             print("counting beer")
             new_beer_count += int(product.get('quantity', 0))
 
